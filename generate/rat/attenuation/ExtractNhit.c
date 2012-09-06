@@ -1,0 +1,18 @@
+{
+  gROOT->ProcessLine( ".L $MCVERIFY/rat/ExtractNhit.cc+" );
+
+  ExtractNhit( "L300.root", "LN300.root" );
+  ExtractNhit( "L350.root", "LN350.root" );
+  ExtractNhit( "L400.root", "LN400.root" );
+  ExtractNhit( "L450.root", "LN450.root" );
+  ExtractNhit( "L500.root", "LN500.root" );
+  ExtractNhit( "L550.root", "LN550.root" );
+  ExtractNhit( "H300.root", "HN300.root" );
+  ExtractNhit( "H350.root", "HN350.root" );
+  ExtractNhit( "H400.root", "HN400.root" );
+  ExtractNhit( "H450.root", "HN450.root" );
+  ExtractNhit( "H500.root", "HN500.root" );
+  ExtractNhit( "H550.root", "HN550.root" );
+
+  exit;
+}
