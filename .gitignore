@@ -1,5 +1,6 @@
 # Ignore files such as:
 *~
 RunScript.sh
+RunScript.csh
 *.so
 *.d
