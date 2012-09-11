@@ -3,9 +3,6 @@
 
 /rat/db/set DETECTOR geo_file "sno_h2o.geo"
 
-/rat/db/set PMT[s1408] model_type "PMTOpticsSNOMAN"
-/rat/db/set PMT[s1408] model_params "PMTOpticsSNOMAN_salt"
-
 /run/initialize
 
 # BEGIN EVENT LOOP
