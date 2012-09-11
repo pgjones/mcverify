@@ -1,5 +1,5 @@
 {
-  gROOT->ProcessLine( ".L $MCVERIFY/extraction/rat/ExtractCerenkov.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractCerenkov.cc+" );
 
   ExtractCerenkov( "E1.root", "EC1.root" );
   ExtractCerenkov( "E2.root", "EC2.root" );

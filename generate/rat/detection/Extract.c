@@ -1,5 +1,5 @@
 {
-  gROOT->ProcessLine( ".L $MCVERIFY/rat/ExtractAveOccupancy.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractAveOccupancy.cc+" );
 
   ExtractAveOccupancy( "PB337.root", "PBX337.root" );
   ExtractAveOccupancy( "PB365.root", "PBX365.root" );

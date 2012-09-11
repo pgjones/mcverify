@@ -1,5 +1,5 @@
 {
-  gROOT->ProcessLine( ".L $MCVERIFY/rat/ExtractAngOccupancy.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractAngOccupancy.cc+" );
 
   ExtractAngOccupancy( "X0.root", "XA0.root", 0.0, 0.0, 0.0 );
   ExtractAngOccupancy( "X1.root", "XA1.root", 1000.0, 0.0, 0.0 );
