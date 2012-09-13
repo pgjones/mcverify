@@ -1,6 +1,8 @@
 /glg4debug/glg4param omit_muon_processes  1.0
 /glg4debug/glg4param omit_hadronic_processes  1.0
 
+/PhysicsList/SelectCerenkovProcess SNOMAN
+
 /rat/db/set DETECTOR geo_file "sno_h2o.geo"
 
 /run/initialize
