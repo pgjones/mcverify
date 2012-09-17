@@ -60,5 +60,8 @@ $pmt_var $off *Me
 *$mc_event_rate 10.00 $per_sec
 *$mc_gen_run_cond $on
 
+*** Extra settings
+$av_z_shift 0.0 *Me
+
 @load_salt_settings
 @run_snodb

@@ -56,5 +56,9 @@ $pmt_var $off *Me
 *$mc_event_rate 10.00 $per_sec
 *$mc_gen_run_cond $on
 
+*** Extra settings
+$d2o_region_01 $salt_gmgm 0.0 *Me
+$d2o_region_02 $salt_gmgm 0.0 *Me
+
 @load_salt_settings
 @run_snodb
