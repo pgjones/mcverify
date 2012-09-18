@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
-/// Extracts the range of the electron(s) in the event.
-/// Data is converted into cm.
+/// Extracts the range of the primary electron in the event.
+/// Data is converted into cm!
 /// P G Jones <p.g.jones@qmul.ac.uk>
 ///
 /// 17/09/2012 : New File
@@ -28,8 +28,8 @@ LoadRootFile( const char* lpFile,
               RAT::DS::Run **rRun );
 
 void 
-ExtractRange( const char* inFile,
-              const char* outFile )
+ExtractPrimaryRange( const char* inFile,
+                     const char* outFile )
 {
   // Load the root file first
   RAT::DS::Root* rDS;
@@ -38,7 +38,7 @@ ExtractRange( const char* inFile,
   LoadRootFile( inFile, &tree, &rDS, &rRun );
   
   time_t codeStart = time( NULL );
-  TH1D* range = new TH1D( "range", "range", 10000, 0.0, 1000.0 ); //mm [0,10]m
+  TH1D* range = new TH1D( "range", "range", 100, 0.0, 10.0 ); //cm range [0,10]cm
 
   for( int iEvent = 0; iEvent < tree->GetEntries(); iEvent++ )
     {
@@ -59,8 +59,8 @@ FillHistogram( RAT::DS::MC* rMC,
                TH1D* range )
 {
   for( int iTrack = 0; iTrack < rMC->GetMCTrackCount(); iTrack++ )
-    if( rMC->GetMCTrack( iTrack )->GetPDGCode() == 11 )
-      range->Fill( rMC->GetMCTrack( iTrack )->GetLength() * 10.0 ); // Convert to cm
+    if( rMC->GetMCTrack( iTrack )->GetPDGCode() == 11 && rMC->GetMCTrack( iTrack )->GetParentID() == 0 ) // Primary electron has parent ID 0
+      range->Fill( rMC->GetMCTrack( iTrack )->GetLength() / 10.0 ); // Convert to cm
 }
 
 void

@@ -19,7 +19,7 @@ CalculateCerenkovYield( const double eStart, // Total energy of the particle at 
   const double hbarc =  197.327 * 1e6 * 1e-6; // eV nm
   const double hc = hbarc * 2.0 * 3.14; // eV nm
   const double me = 0.511; //MeV
-  const double nbar = 1.342; // Average refractive index for heavy water 
+  //const double nbar = 1.342; // Average refractive index for light water 
 
   TF1* beta2Func = new TF1( "beta2", "1 - [0]*[0] / ( x * x )", 0.0, 10.0 ); // Beta square value
   beta2Func->SetParameter( 0, me );
@@ -27,19 +27,19 @@ CalculateCerenkovYield( const double eStart, // Total energy of the particle at 
   double electrondEdx[] = { 2.256E+01, 1.898E+01, 1.647E+01, 1.461E+01, 1.318E+01, 1.110E+01, 9.657E+00, 8.596E+00, 7.781E+00, 7.134E+00, 6.607E+00, 6.170E+00, 5.801E+00, 5.211E+00, 4.761E+00, 4.407E+00, 4.119E+00, 3.596E+00, 3.242E+00, 2.988E+00, 2.798E+00, 2.533E+00, 2.360E+00, 2.241E+00, 2.154E+00, 2.090E+00, 2.041E+00, 2.003E+00, 1.972E+00, 1.926E+00, 1.896E+00, 1.876E+00, 1.862E+00, 1.845E+00, 1.841E+00, 1.844E+00, 1.850E+00, 1.868E+00, 1.889E+00, 1.910E+00, 1.931E+00, 1.951E+00, 1.971E+00, 1.991E+00, 2.010E+00, 2.047E+00, 2.082E+00, 2.116E+00, 2.149E+00, 2.230E+00, 2.306E+00, 2.381E+00, 2.454E+00, 2.598E+00, 2.738E+00, 2.876E+00, 3.013E+00, 3.150E+00, 3.286E+00, 3.421E+00, 3.556E+00, 3.827E+00, 4.096E+00, 4.366E+00, 4.636E+00, 5.311E+00, 5.987E+00, 6.663E+00, 7.341E+00, 8.698E+00, 1.006E+01, 1.142E+01, 1.278E+01, 1.414E+01, 1.551E+01, 1.688E+01, 1.824E+01, 2.098E+01, 2.371E+01, 2.645E+01, 2.919E+01 }; // MeV cm^2 / g
   TGraph* dEdx = new TGraph( 81, electronKE, electrondEdx );
 
-  const double BetaMin = 1.0 / nbar;
-  const double Emin = me / sqrt( 1.0 - BetaMin * BetaMin );
-  const double Estep = 0.01; // Intergral step size
+  const double Estep = 0.001; // Intergral step size
   double N = 0.0;
   range = 0.0;
-  // Integrate from the threshold energy to the start energy
-  for( double Etotal = Emin; Etotal <= eStart; Etotal += Estep )
+  // Integrate from 0.0 to the start energy if the number created is less or equal to zero then ignore
+  for( double Etotal = 0.0; Etotal <= eStart; Etotal += Estep )
     {
       const double dx = 1.0 / ( dEdx->Eval( Etotal - me ) * density ) * Estep; // In cm
       range += dx;
       // 370 is the constant for photons eV^-1 cm^-1
-      // 2.18 is the integral over 1/n^2 for n=1.337 and the limits of 220 and 710nm.
-      N += 370 * z * z * ( hc / 220 - hc /710 - 1.0 / beta2Func->Eval( Etotal ) * 2.18 ) * dx;
+      // 2.58 is the integral over 1/n^2 for lightwater and the limits of 220 and 710nm.
+      const double dN = 370 * z * z * ( hc / 220 - hc /710 - 1.0 / beta2Func->Eval( Etotal ) * 2.58 ) * dx;
+      if( dN > 0.0 )
+        N += dN;
     }
   return N;
 }
