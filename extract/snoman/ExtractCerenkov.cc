@@ -37,7 +37,7 @@ ExtractCerenkov( char* lpInFile,
   tree->SetEventAddress( qEV );
  
   time_t codeStart = time( NULL );
-  TH1D* nCer = new TH1D( "numCer", "numCer", 3000, 0.0, 3000.0 );
+  TH1D* nCer = new TH1D( "numCer", "numCer", 4000, 0.0, 4000.0 );
 
   // Loop over the events
   int iLoop;

@@ -38,7 +38,7 @@ ExtractCerenkov( const char* inFile,
   LoadRootFile( inFile, &tree, &rDS, &rRun );
   
   time_t codeStart = time( NULL );
-  TH1D* nCer = new TH1D( "numCer", "numCer", 3000, 0.0, 3000.0 );
+  TH1D* nCer = new TH1D( "numCer", "numCer", 4000, 0.0, 4000.0 );
 
   for( int iEvent = 0; iEvent < tree->GetEntries(); iEvent++ )
     {

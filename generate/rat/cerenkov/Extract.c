@@ -23,7 +23,7 @@
   ExtractCerenkov( "C19.root", "CC19.root" );
   ExtractCerenkov( "C20.root", "CC20.root" );
 
-  gSystem->Unload( "ExtractCerenkov_cc.so" );
+  gSystem->Unload( "$MCVERIFY/extract/rat/ExtractCerenkov_cc.so" );
 
   gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractRange.cc+" );
 
@@ -49,7 +49,7 @@
   ExtractRange( "C19.root", "CR19.root" );
   ExtractRange( "C20.root", "CR20.root" );
 
-  gSystem->Unload( "ExtractRange_cc.so" );
+  gSystem->Unload( "$MCVERIFY/extract/rat/ExtractRange_cc.so" );
 
   exit; 
 }
