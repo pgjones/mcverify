@@ -15,11 +15,13 @@ CalculateCerenkovYield( const double eStart, // Total energy of the particle at 
                         double& range ) // Returned range of the electron [cm]
 {
   const double z = 1.0; // Value as used in RAT
-  const double density = 1.0; // Used dE/dx for water
+  const double density = 1.0; // g/cm^2 Used dE/dx for water
   const double hbarc =  197.327 * 1e6 * 1e-6; // eV nm
   const double hc = hbarc * 2.0 * 3.14; // eV nm
   const double me = 0.511; //MeV
   //const double nbar = 1.342; // Average refractive index for light water 
+  const double nMin = 200.0; //nm for lightwater
+  const double nMax = 800.0; //nm for lightwater
 
   TF1* beta2Func = new TF1( "beta2", "1 - [0]*[0] / ( x * x )", 0.0, 10.0 ); // Beta square value
   beta2Func->SetParameter( 0, me );
@@ -30,14 +32,14 @@ CalculateCerenkovYield( const double eStart, // Total energy of the particle at 
   const double Estep = 0.001; // Intergral step size
   double N = 0.0;
   range = 0.0;
-  // Integrate from 0.0 to the start energy if the number created is less or equal to zero then ignore
-  for( double Etotal = 0.0; Etotal <= eStart; Etotal += Estep )
+  // Integrate from rest, me, to the start energy if the number created is less or equal to zero then ignore
+  for( double Etotal = me; Etotal <= eStart; Etotal += Estep )
     {
       const double dx = 1.0 / ( dEdx->Eval( Etotal - me ) * density ) * Estep; // In cm
       range += dx;
       // 370 is the constant for photons eV^-1 cm^-1
       // 2.58 is the integral over 1/n^2 for lightwater and the limits of 220 and 710nm.
-      const double dN = 370 * z * z * ( hc / 220 - hc /710 - 1.0 / beta2Func->Eval( Etotal ) * 2.58 ) * dx;
+      const double dN = 370 * z * z * ( hc / nMin - hc / nMax - 1.0 / beta2Func->Eval( Etotal ) * 2.58 ) * dx;
       if( dN > 0.0 )
         N += dN;
     }
