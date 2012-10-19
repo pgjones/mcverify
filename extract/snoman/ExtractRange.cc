@@ -65,15 +65,17 @@ FillHistograms( QEvent* qEV,
 {
   const int newPhotonINC = 301000; //301 for new photon
   map< int, vector<TVector3> > trackVPositions; // Track positions by track ID
-  int trackID == -1;
+  int trackID = -1;
   
-  for( int iMCVX = 1; iMCVX < qEV->GetnMCVXs(); iMCVX++ )
+  cout << qEV->GetnMCVXs() << endl;
+  for( int iMCVX = 0; iMCVX < qEV->GetnMCVXs(); iMCVX++ )
     {
       QMCVX* vertex = qEV->GetMCVX( iMCVX );
       if( vertex->GetINC() == newPhotonINC ) // New Track
         trackID++;
-      if( vertex->GetIDP() == ?? ) // Check track is electron
-        trackVPositions[vertex->GetTrackID()].push_back( TVector3( vertex->GetX(), vertex->GetY(), vertex->GetZ() ) );
+	  cout << vertex->GetIDP() << endl;
+      if( vertex->GetIDP() == 11 ) // Check track is electron
+        trackVPositions[trackID].push_back( TVector3( vertex->GetX(), vertex->GetY(), vertex->GetZ() ) );
     }
   // Now run over tracks, calculate range and fill histogram
   for( map< int, vector<TVector3> >::iterator iTer = trackVPositions.begin(); iTer != trackVPositions.end(); iTer ++ )

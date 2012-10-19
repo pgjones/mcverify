@@ -1,6 +1,6 @@
 {
   gROOT->ProcessLine( ".X $MCVERIFY/extract/snoman/Load.c");
-  gROOT->ProcessLine( ".L $MCVERIYF/extract/snoman/ExtractCerenkov.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractCerenkov.cc+" );
   
   ExtractCerenkov( "C1.root", "CC1.root" );
   ExtractCerenkov( "C2.root", "CC2.root" );
@@ -25,7 +25,7 @@
   
   gSystem->Unload( "ExtractCerenkov_cc.so" );
 
-  gROOT->ProcessLine( ".L $MCVERIYF/extract/snoman/ExtractRange.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractRange.cc+" );
   
   ExtractRange( "C1.root", "CR1.root" );
   ExtractRange( "C2.root", "CR2.root" );
