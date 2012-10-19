@@ -59,6 +59,7 @@ $pmt_var $off *Me
 *** Extra settings
 $d2o_region_01 $salt_gmgm 0.0 *Me
 $d2o_region_02 $salt_gmgm 0.0 *Me
+$av_z_shift 0.0 *Me
 
 @load_salt_settings
 @run_snodb
