@@ -28,7 +28,7 @@ ExtractAngOccupancy( "Z3.root", "ZA3.root", 0.0, 0.0, 300.0 );
 ExtractAngOccupancy( "Z4.root", "ZA4.root", 0.0, 0.0, 400.0 );
 ExtractAngOccupancy( "Z5.root", "ZA5.root", 0.0, 0.0, 500.0 );
 
-gSystem->Unload( "$MCVERIFY/extract/snoman/ExtractAngOccupancyv_cc.so" );
+gSystem->Unload( "$MCVERIFY/extract/snoman/ExtractAngOccupancy_cc.so" );
 
 gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractNhit.cc+" );
 

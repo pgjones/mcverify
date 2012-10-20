@@ -51,5 +51,28 @@
 
   gSystem->Unload( "$MCVERIFY/extract/rat/ExtractPrimaryRange_cc.so" );
 
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractNhit.cc+" );
+
+  ExtractNhit( "C1.root", "CN1.root" );
+  ExtractNhit( "C2.root", "CN2.root" );
+  ExtractNhit( "C3.root", "CN3.root" );
+  ExtractNhit( "C4.root", "CN4.root" );
+  ExtractNhit( "C5.root", "CN5.root" );
+  ExtractNhit( "C6.root", "CN6.root" );
+  ExtractNhit( "C7.root", "CN7.root" );
+  ExtractNhit( "C8.root", "CN8.root" );
+  ExtractNhit( "C9.root", "CN9.root" );
+  ExtractNhit( "C10.root", "CN10.root" );
+  ExtractNhit( "C11.root", "CN11.root" );
+  ExtractNhit( "C12.root", "CN12.root" );
+  ExtractNhit( "C13.root", "CN13.root" );
+  ExtractNhit( "C14.root", "CN14.root" );
+  ExtractNhit( "C15.root", "CN15.root" );
+  ExtractNhit( "C16.root", "CN16.root" );
+  ExtractNhit( "C17.root", "CN17.root" );
+  ExtractNhit( "C18.root", "CN18.root" );
+  ExtractNhit( "C19.root", "CN19.root" );
+  ExtractNhit( "C20.root", "CN20.root" );
+
   exit; 
 }

@@ -14,6 +14,7 @@
   ExtractNhit( "H500.root", "HN500.root" );
   ExtractNhit( "H550.root", "HN550.root" );
 
+  gSystem->Unload( "$MCVERIFY/extract/rat/ExtractNhit_cc.so" );
   gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractAveOccupancy.cc+" );
 
   ExtractAveOccupancy( "L300.root", "LX300.root" );

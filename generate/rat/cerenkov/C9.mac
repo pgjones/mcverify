@@ -7,6 +7,7 @@
 
 /rat/db/set DETECTOR geo_file "geo/snoman_salt.geo"
 /rat/db/set GEO[scint] material "lightwater_snoman_salt"
+/rat/db/set Belly_Object RadiusRope 25.0
 
 /run/initialize
 

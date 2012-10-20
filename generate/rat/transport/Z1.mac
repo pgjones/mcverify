@@ -4,6 +4,7 @@
 /PhysicsList/SelectCerenkovProcess SNOMAN
 
 /rat/db/set DETECTOR geo_file "geo/snoman_salt.geo"
+/rat/db/set Belly_Object RadiusRope 25.0
 
 /run/initialize
 
