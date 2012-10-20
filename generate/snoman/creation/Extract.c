@@ -1,6 +1,6 @@
 {
   gROOT->ProcessLine( ".X $MCVERIFY/extract/snoman/Load.c");
-  gROOT->ProcessLine( ".L $MCVERIYF/extract/snoman/ExtractCerenkov.cc+" );
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractCerenkov.cc+" );
   
   ExtractCerenkov( "E1.root", "EC1.root" );
   ExtractCerenkov( "E2.root", "EC2.root" );
@@ -16,9 +16,9 @@
   ExtractCerenkov( "G5.root", "GC5.root" );
   ExtractCerenkov( "G6.root", "GC6.root" );
 
-  gROOT->UnloadMacro( "ExtractCerenkov_cc.so" );
+  gSystem->Unload( "$MCVERIFY/extract/snoman/ExtractCerenkov_cc.so" );
   gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractNhit.cc+" );
-  
+ 
   ExtractNhit( "E1.root", "EN1.root" );
   ExtractNhit( "E2.root", "EN2.root" );
   ExtractNhit( "E3.root", "EN3.root" );

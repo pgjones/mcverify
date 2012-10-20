@@ -5,5 +5,6 @@
 ////////////////////////////////////////////////////////
 
 {
+  gROOT->ProcessLine( ".! rm $MCVERIFY/extract/snoman/*_cc.*" );
   gSystem->AddIncludePath("-I$QSNO_ROOT/include");
 }

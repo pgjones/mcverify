@@ -17,6 +17,7 @@
   ExtractNhit( "H550.root", "HN550.root" );
 
   // Now the average occupancy
+  gSystem->Unload( "$MCVERIFY/extract/snoman/ExtractNhit_cc.so" );
   gROOT->ProcessLine( ".L $MCVERIFY/extract/snoman/ExtractAveOccupancy.cc+" );
 
   ExtractAveOccupancy( "L300.root", "LX300.root" );
