@@ -1,0 +1,41 @@
+/glg4debug/glg4param omit_muon_processes  1.0
+/glg4debug/glg4param omit_hadronic_processes  1.0
+
+/rat/db/set DETECTOR geo_file "geo/snoman_salt.geo"
+
+/rat/db/set DAQ dqxx_info 0
+
+/rat/db/set GEO[innerPMT] type "panelbuilder"
+/rat/db/set GEO[innerPMT] pmt_type ["r1408"]
+/rat/db/set GEO[outerPMT] pmt_type ["r1408"]
+/rat/db/set GEO[innerPMT] bucket_type ["bRAT"]
+/rat/db/set GEO[innerPMT] concentrator_type ["cRAT"]
+/rat/db/set PMT[r1408] model_type "PMTOptics0"
+/rat/db/set PMT[r1408] model_params "PMTOptics0_0"
+
+/run/initialize
+
+# BEGIN EVENT LOOP
+/rat/proc frontend
+/rat/proc trigger
+/rat/proc eventbuilder
+
+/rat/proc count
+/rat/procset update 100
+
+/tracking/storeTrajectory 1
+
+/rat/proc prune
+/rat/procset prune "mc.track:opticalphoton.volume.innerPMT_"
+
+/rat/proc outroot
+/rat/procset file "PR500.root"
+
+# END EVENT LOOP
+/generator/add combo gun:fill
+/generator/vtx/set opticalphoton 0 0 0 2.4825e-6 0 0 0 10000
+/generator/pos/set 0 0 0
+/generator/rate/set 1
+
+/run/beamOn 200
+exit
