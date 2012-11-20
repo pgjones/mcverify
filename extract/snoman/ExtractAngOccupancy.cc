@@ -62,7 +62,7 @@ ExtractAngOccupancy( char* lpInFile,
 	
     FillHistograms( qEV, angOccupy, xPos, yPos, zPos );
   }
-  angOccypy->Sumw2();
+  angOccupy->Sumw2();
   angOccupy->Scale( 1.0 / (double) numMCEvents );
   TFile outFile( lpOutFile, "RECREATE" );
   outFile.cd();
