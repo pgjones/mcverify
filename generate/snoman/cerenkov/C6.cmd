@@ -42,6 +42,7 @@ $rayleigh_scat         $on
 $photodisintegration   $on
 
 $geom_media 100 100 *Me
+$geom_media 212 100 *Me
 
 *** Enable belly plate and rope geometry, and tiles themselves
 @geom_belly_plate_rope

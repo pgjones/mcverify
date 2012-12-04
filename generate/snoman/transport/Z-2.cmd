@@ -45,7 +45,7 @@ $photodisintegration   $on
 
 *** Enable belly plate and rope geometry, and tiles themselves
 @geom_belly_plate_rope
-*@geom_acrylic_tiles
+SET BANK GEDS 201 WORD 1 TO 0 *Turn off acrylic tiles
 $max_cer_ge_errors 20
 
 $geom_media 200 400 *Me
