@@ -1,29 +1,55 @@
 {
   gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractPrimaryCerenkov.cc+" );
 
-  ExtractPrimaryCerenkov( "C1.root", "CC1.root" );
-  ExtractPrimaryCerenkov( "C2.root", "CC2.root" );
-  ExtractPrimaryCerenkov( "C3.root", "CC3.root" );
-  ExtractPrimaryCerenkov( "C4.root", "CC4.root" );
-  ExtractPrimaryCerenkov( "C5.root", "CC5.root" );
-  ExtractPrimaryCerenkov( "C6.root", "CC6.root" );
-  ExtractPrimaryCerenkov( "C7.root", "CC7.root" );
-  ExtractPrimaryCerenkov( "C8.root", "CC8.root" );
-  ExtractPrimaryCerenkov( "C9.root", "CC9.root" );
-  ExtractPrimaryCerenkov( "C10.root", "CC10.root" );
-  ExtractPrimaryCerenkov( "C11.root", "CC11.root" );
-  ExtractPrimaryCerenkov( "C12.root", "CC12.root" );
-  ExtractPrimaryCerenkov( "C13.root", "CC13.root" );
-  ExtractPrimaryCerenkov( "C14.root", "CC14.root" );
+  ExtractPrimaryCerenkov( "C1.root", "CP1.root" );
+  ExtractPrimaryCerenkov( "C2.root", "CP2.root" );
+  ExtractPrimaryCerenkov( "C3.root", "CP3.root" );
+  ExtractPrimaryCerenkov( "C4.root", "CP4.root" );
+  ExtractPrimaryCerenkov( "C5.root", "CP5.root" );
+  ExtractPrimaryCerenkov( "C6.root", "CP6.root" );
+  ExtractPrimaryCerenkov( "C7.root", "CP7.root" );
+  ExtractPrimaryCerenkov( "C8.root", "CP8.root" );
+  ExtractPrimaryCerenkov( "C9.root", "CP9.root" );
+  ExtractPrimaryCerenkov( "C10.root", "CP10.root" );
+  ExtractPrimaryCerenkov( "C11.root", "CP11.root" );
+  ExtractPrimaryCerenkov( "C12.root", "CP12.root" );
+  ExtractPrimaryCerenkov( "C13.root", "CP13.root" );
+  ExtractPrimaryCerenkov( "C14.root", "CP14.root" );
 
-  ExtractPrimaryCerenkov( "C15.root", "CC15.root" );
-  ExtractPrimaryCerenkov( "C16.root", "CC16.root" );
-  ExtractPrimaryCerenkov( "C17.root", "CC17.root" );
-  ExtractPrimaryCerenkov( "C18.root", "CC18.root" );
-  ExtractPrimaryCerenkov( "C19.root", "CC19.root" );
-  ExtractPrimaryCerenkov( "C20.root", "CC20.root" );
+  ExtractPrimaryCerenkov( "C15.root", "CP15.root" );
+  ExtractPrimaryCerenkov( "C16.root", "CP16.root" );
+  ExtractPrimaryCerenkov( "C17.root", "CP17.root" );
+  ExtractPrimaryCerenkov( "C18.root", "CP18.root" );
+  ExtractPrimaryCerenkov( "C19.root", "CP19.root" );
+  ExtractPrimaryCerenkov( "C20.root", "CP20.root" );
 
   gSystem->Unload( "$MCVERIFY/extract/rat/ExtractPrimaryCerenkov_cc.so" );
+
+  gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractCerenkov.cc+" );
+
+  ExtractCerenkov( "C1.root", "CC1.root" );
+  ExtractCerenkov( "C2.root", "CC2.root" );
+  ExtractCerenkov( "C3.root", "CC3.root" );
+  ExtractCerenkov( "C4.root", "CC4.root" );
+  ExtractCerenkov( "C5.root", "CC5.root" );
+  ExtractCerenkov( "C6.root", "CC6.root" );
+  ExtractCerenkov( "C7.root", "CC7.root" );
+  ExtractCerenkov( "C8.root", "CC8.root" );
+  ExtractCerenkov( "C9.root", "CC9.root" );
+  ExtractCerenkov( "C10.root", "CC10.root" );
+  ExtractCerenkov( "C11.root", "CC11.root" );
+  ExtractCerenkov( "C12.root", "CC12.root" );
+  ExtractCerenkov( "C13.root", "CC13.root" );
+  ExtractCerenkov( "C14.root", "CC14.root" );
+
+  ExtractCerenkov( "C15.root", "CC15.root" );
+  ExtractCerenkov( "C16.root", "CC16.root" );
+  ExtractCerenkov( "C17.root", "CC17.root" );
+  ExtractCerenkov( "C18.root", "CC18.root" );
+  ExtractCerenkov( "C19.root", "CC19.root" );
+  ExtractCerenkov( "C20.root", "CC20.root" );
+
+  gSystem->Unload( "$MCVERIFY/extract/rat/ExtractCerenkov_cc.so" );
 
   gROOT->ProcessLine( ".L $MCVERIFY/extract/rat/ExtractPrimaryRange.cc+" );
 

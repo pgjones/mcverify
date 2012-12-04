@@ -10,7 +10,7 @@
   ExtractData( "PR550.root", true );
   ExtractData( "PRGamma.root", true );  
 
-  vector<char*> files1;
+  vector<string> files1;
   files1.push_back( "PR300.dat" );
   files1.push_back( "PR350.dat" );
   files1.push_back( "PR400.dat" );
