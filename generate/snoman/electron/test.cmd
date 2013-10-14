@@ -17,7 +17,7 @@ $mc_num_seed_vx 1
 $mc_interaction_type   $start$$e_minus	**different types interactions
 $mc_position           $pos_point 0.0 0.0 0.0
 $mc_direction          $dir_isotropic
-$mc_energy             $en_mono           2.0  ***This is an energy value...
+$mc_energy             $en_mono           2.511  ***This is an energy value...
 $mc_time               $tim_fixed         0.0
 $mc_miscellaneous      $misc_random_pol
 $num_events            1000
@@ -46,10 +46,7 @@ $photodisintegration   $on
 *** Enable belly plate and rope geometry, and tiles themselves
 @geom_belly_plate_rope
 ***No idea what the line below is doing...
-***SET BANK GEDS 201 WORD 1 TO 0 *Turn off acrylic tiles
 $max_cer_ge_errors 20
-
-$geom_media 200 400 *Me
 
 *** 3d PMT modelling
 $3d_pmt
