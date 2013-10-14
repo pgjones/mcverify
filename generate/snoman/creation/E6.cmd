@@ -1,11 +1,15 @@
-titles qio_data.dat
 titles dmm.dat
 titles casl.dat
 set bank TDMM 1 word 14 to 0
-set bank TQIO 3 word 19 to 0
-set bank TQIO 3 word 5 to 1
 titles anxx_nu_0000020674_p3.dat
 titles DQXX_0000020674.dat
+
+$mcdaq_hthresh 0
+$mcdaq_cthresh 0
+
+set bank TQIO 3 word 2 to -1
+set bank TQIO 3 word 3 to -1
+titles qio_phil.dat
 file QIO 1 E6.root
  
 $mcrun 20675
@@ -15,7 +19,7 @@ $mc_gen_run_cond $on
 ***   MC Generation
 $mc_num_seed_vx 1
 $mc_interaction_type   $start$$e_minus
-$mc_position           $pos_point 0.0 0.0 0.0 
+$mc_position           $pos_point 0.0 0.0 0.0
 $mc_direction          $dir_isotropic
 $mc_energy             $en_mono 6.511
 $num_events            10000
@@ -23,9 +27,6 @@ $mc_time               $tim_fixed 0.0
 
 define event_loop
    call mco
-   call ftt
-   call ftp
-   call ftu
    call qio(2)
 quit_event
 end_def
@@ -40,6 +41,9 @@ $mcdaq_ztell           $off
 $fresnel_scat          $on
 $rayleigh_scat         $on
 $photodisintegration   $on
+
+$geom_media 100 100 *Me
+$geom_media 212 100 *Me
 
 *** Enable belly plate and rope geometry, and tiles themselves
 @geom_belly_plate_rope
@@ -59,7 +63,6 @@ $pmt_var $off *Me
 *** Extra settings
 $d2o_region_01 $salt_gmgm 0.0 *Me
 $d2o_region_02 $salt_gmgm 0.0 *Me
-$av_z_shift 0.0	*Me
 
 @load_salt_settings
 @run_snodb

@@ -64,6 +64,8 @@ FillHistograms( QEvent* qEV,
 				TH1D* nCer )
 {
   const int lastMCVX = qEV->GetnMCVXs() - 1;
+  if( lastMCVX < 0 )
+	return;
   nCer->Fill( qEV->GetMCVX( lastMCVX )->GetNCerD2O() );
 }
 

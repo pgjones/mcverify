@@ -20,7 +20,7 @@ $mc_direction          $dir_isotropic
 $mc_energy             $en_mono           3.216e-6 *386nm
 $mc_time               $tim_fixed         0.0
 $mc_miscellaneous      $misc_random_pol
-$mc_misc_num_photons   10000
+$mc_misc_num_photons   1000
 $num_events            1000
 
 define event_loop
