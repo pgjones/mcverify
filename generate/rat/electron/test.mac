@@ -1,0 +1,31 @@
+/PhysicsList/OmitMuonicProcesses true
+/PhysicsList/OmitHadronicProcesses true
+
+/PhysicsList/SelectCerenkovProcess SNOMAN
+
+#Need to use the snoman salt geometry
+/rat/db/set DETECTOR geo_file "geo/snoman_salt.geo"
+
+/run/initialize
+
+# BEGIN EVENT LOOP
+/rat/proc frontend
+/rat/proc trigger
+/rat/proc eventbuilder
+/rat/proc calibratePMT
+
+/rat/proc count
+/rat/procset update 100
+
+/rat/proc outroot
+/rat/procset file "test.root"
+
+# END EVENT LOOP
+#Example code to simulate a 2MeV electron
+/generator/add combo gun:point:poisson
+/generator/vtx/set e- 0 0 0 2.0
+/generator/pos/set 0.0 0.0 0.0
+/generator/rate/set 1.0
+
+/rat/run/start 1000
+exit
