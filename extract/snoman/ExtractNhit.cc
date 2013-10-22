@@ -23,7 +23,7 @@ using namespace std;
 //gSystem->AddIncludePath("-I$QSNO_ROOT/include");
 
 void
-FillHistograms( QEvent* qEV,
+FillNhitHist( QEvent* qEV,
 				TH1D* nHits );
 
 void
@@ -50,7 +50,7 @@ ExtractNhit( char* lpInFile,
 
     tree->GetEntry( iLoop );
 
-    FillHistograms( qEV, nHits );
+    FillNhitHist( qEV, nHits );
   }
 
   TFile outFile( lpOutFile, "RECREATE" );
@@ -60,7 +60,7 @@ ExtractNhit( char* lpInFile,
 }
 
 void
-FillHistograms( QEvent* qEV,
+FillNhitHist( QEvent* qEV,
 				TH1D* nHits )
 {
   nHits->Fill( qEV->GetNhits() );

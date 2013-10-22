@@ -63,27 +63,25 @@ void
 FillHistograms( QEvent* qEV,
 				TH1D* range )
 {
-  const int newPhotonINC = 301000; //301 for new photon
+  const int newINC = 100; //100 for new electron
   map< int, vector<TVector3> > trackVPositions; // Track positions by track ID
-  int trackID = -1;
+  int trackID = 0;
   
-  cout << qEV->GetnMCVXs() << endl;
   for( int iMCVX = 0; iMCVX < qEV->GetnMCVXs(); iMCVX++ )
     {
-      QMCVX* vertex = qEV->GetMCVX( iMCVX );
-      if( vertex->GetINC() == newPhotonINC ) // New Track
+      QMCVX* qMCVX = qEV->GetMCVX( iMCVX );
+      if( static_cast<int>( qMCVX->GetINC() / 1000.0 ) == 381 ||
+          static_cast<int>( qMCVX->GetINC() / 1000.0 ) == 382 ||
+          static_cast<int>( qMCVX->GetINC() / 1000.0 ) == 383 ||
+          static_cast<int>( qMCVX->GetINC() / 1000.0 ) == 384 ) // Track has ended
         trackID++;
-	  cout << vertex->GetIDP() << endl;
-      if( vertex->GetIDP() == 11 ) // Check track is electron
-        trackVPositions[trackID].push_back( TVector3( vertex->GetX(), vertex->GetY(), vertex->GetZ() ) );
+      if( qMCVX->GetIDP() == 20 ) // Check track is electron
+        trackVPositions[trackID].push_back( TVector3( qMCVX->GetX(), qMCVX->GetY(), qMCVX->GetZ() ) );
     }
   // Now run over tracks, calculate range and fill histogram
-  for( map< int, vector<TVector3> >::iterator iTer = trackVPositions.begin(); iTer != trackVPositions.end(); iTer ++ )
-    {
-      double trackRange = 0.0;
-      for( unsigned int iStep = 1; iStep < iTer->second.size(); iStep++ )
-        trackRange += ( iTer->second[iStep] - iTer->second[iStep] ).Mag();
-      range->Fill( trackRange );
-    }
+  double trackRange = 0.0;
+  for( unsigned int iStep = 1; iStep < trackVPositions[0].size(); iStep++ )
+	trackRange += ( trackVPositions[0][iStep - 1] - trackVPositions[0][iStep] ).Mag();
+  range->Fill( trackRange );
 }
 

@@ -1,4 +1,4 @@
-titles qio_data.dat
+titles qio_data.dat ***This section seems to be standard...
 titles dmm.dat
 titles casl.dat
 set bank TDMM 1 word 14 to 0
@@ -6,21 +6,23 @@ set bank TQIO 3 word 19 to 0
 set bank TQIO 3 word 5 to 1
 titles anxx_nu_0000020674_p3.dat
 titles DQXX_0000020674.dat
-file QIO 1 C18.root
+file QIO 1 test.root ***this appears to be the output file from ROOT
  
-$mcrun 20675
+$mcrun 20675	***this also appears to be standard...
 $mc_event_rate 50.00 $per_sec
 $mc_gen_run_cond $on
 
 ***   MC Generation
 $mc_num_seed_vx 1
-$mc_interaction_type   $start$$e_minus
-$mc_position           $pos_point 0.0 0.0 0.0 
+$mc_interaction_type   $start$$e_minus	**different types interactions
+$mc_position           $pos_point 0.0 0.0 0.0
 $mc_direction          $dir_isotropic
-$mc_energy             $en_mono 6.0
-$num_events            10000
-$mc_time               $tim_fixed 0.0
+$mc_energy             $en_mono           2.511  ***This is an energy value...
+$mc_time               $tim_fixed         0.0
+$mc_miscellaneous      $misc_random_pol
+$num_events            1000
 
+*** This also appears to be standard
 define event_loop
    call mco
    call ftt
@@ -41,12 +43,9 @@ $fresnel_scat          $on
 $rayleigh_scat         $on
 $photodisintegration   $on
 
-$geom_media 100 100 *Me
-$geom_media 212 100 *Me
-
 *** Enable belly plate and rope geometry, and tiles themselves
 @geom_belly_plate_rope
-*@geom_acrylic_tiles
+***No idea what the line below is doing...
 $max_cer_ge_errors 20
 
 *** 3d PMT modelling
@@ -60,8 +59,8 @@ $pmt_var $off *Me
 *$mc_gen_run_cond $on
 
 *** Extra settings
-$d2o_region_01 $salt_gmgm 0.0 *Me
-$d2o_region_02 $salt_gmgm 0.0 *Me
+*** Do I need these settings...
+*$av_z_shift 0.0 *Me
 
 @load_salt_settings
 @run_snodb
