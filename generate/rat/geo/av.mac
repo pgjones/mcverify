@@ -3,11 +3,16 @@
 
 /PhysicsList/SelectCerenkovProcess SNOMAN
 
-/rat/db/set DETECTOR geo_file "geo/snoman_salt.geo"
+/rat/db/set DETECTOR geo_file "snoman/salt_simple.geo"
 /rat/db/set DETECTOR pmt_info_file "pmt/snoman.ratdb"
-/rat/db/load PMT_DQXX.ratdb
+/rat/db/load snoman/PMT_DQXX.ratdb
+/rat/db/load snoman/OPTICS.ratdb
+/rat/db/load snoman/MATERIALS.ratdb
+/rat/db/set GEO[scint] material "lightwater_snoman_salt"
 
-/rat/db/set GEO[scint] material "heavywater_snoman_salt"
+/rat/db/set GEO[av_tile] enable 0
+/rat/db/set GEO[hold_up_ropes] enable 0
+/rat/db/set GEO[neck] enable 0
 
 /run/initialize
 
@@ -21,13 +26,13 @@
 /rat/procset update 100
 
 /rat/proc outroot
-/rat/procset file "Y5.root"
+/rat/procset file "av.root"
 
 # END EVENT LOOP
 /generator/add combo gun:point:uniform
-/generator/vtx/set opticalphoton 0 0 0 3.216e-6 0 0 0 10000
+/generator/vtx/set opticalphoton 0 0 0 3.216e-6 0 0 0 1000
 
-/generator/pos/set 0 5000 0
+/generator/pos/set 0 0 0
 /generator/rate/set 1
 
 /rat/run/start 1000

@@ -17,8 +17,9 @@
 /rat/proc count
 /rat/procset update 100
 
-/rat/proc prune
-/rat/procset prune "mc.track:opticalphoton.volume.innerPMT_"
+/rat/proc pruneTrack
+/rat/procset notparticle "opticalphoton"
+/rat/procset notvolume "innerPMT_"
 
 /rat/proc outroot
 /rat/procset file "PR300.root"

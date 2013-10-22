@@ -58,11 +58,17 @@ void
 FillHistogram( RAT::DS::MC* rMC,
                TH1D* nCer )
 {
+  int eTracks = 0;
   int cerCount = 0;
   for( int iTrack = 0; iTrack < rMC->GetMCTrackCount(); iTrack++ )
-    if( rMC->GetMCTrack( iTrack )->GetPDGCode() == 0 && rMC->GetMCTrack( iTrack )->GetParentID() == 1 ) 
-      // Primary electron has track ID 1 photons are PDG 0
-      cerCount++;
+    {
+      if( rMC->GetMCTrack( iTrack )->GetPDGCode() == 11 )
+        eTracks++;
+      if( rMC->GetMCTrack( iTrack )->GetPDGCode() == 0 && rMC->GetMCTrack( iTrack )->GetParentID() == 1 ) 
+        // Primary electron has track ID 1 photons are PDG 0
+        cerCount++;
+    }
+  cout << eTracks << endl;
   nCer->Fill( cerCount );
 }
 
