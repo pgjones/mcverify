@@ -1,0 +1,74 @@
+titles qio_data.dat
+titles dmm.dat
+titles casl.dat
+set bank TDMM 1 word 14 to 0
+set bank TQIO 3 word 19 to 0
+set bank TQIO 3 word 5 to 1
+titles anxx_nu_0000020674_p3.dat
+titles DQXX_0000020674.dat
+file QIO 1 empty.root
+ 
+$mcrun 20675
+$mc_event_rate 50.00 $per_sec
+$mc_gen_run_cond $on
+
+***   MC Generation
+$mc_num_seed_vx 1
+$mc_interaction_type   $start_photon_bomb
+$mc_position           $pos_point 0.0 0.0 0.0
+$mc_direction          $dir_isotropic
+$mc_energy             $en_mono           3.216e-6 *386nm
+$mc_time               $tim_fixed         0.0
+$mc_miscellaneous      $misc_random_pol
+$mc_misc_num_photons   1000
+$num_events            1000
+
+define event_loop
+   call mco
+   call ftt
+   call ftp
+   call ftu
+   call qio(2)
+quit_event
+end_def
+
+***   Job control
+$pegs_file       'pegs4_10.dat     '
+$egs4_ds         $on
+*$starting_seed   5674 13359 0
+*$starting_seed_2 29527 20766 0
+$killvx                0
+$mcdaq_ztell           $off
+$fresnel_scat          $on
+$rayleigh_scat         $on
+$photodisintegration   $on
+
+*** Disable belly plate and rope geometry, and tiles themselves
+$disable_geom    $BLY_PLATE
+$disable_geom    $BLY_GROOVE
+$disable_geom    $BLY_ROPE
+$disable_geom    $ACRV_TILE
+$disable_geom    $ACRC
+$disable_geom    $ACRC_IVL
+$disable_geom    $ACRC_OVL
+$max_cer_ge_errors 20
+
+$geom_media $ACRV 100 * AV to H2O (AV is required)
+$geom_media 212 100 * Neck inner to H2O
+$geom_media 100 100 * Av inner to H2O
+
+*** 3d PMT modelling
+$3d_pmt
+$mc_drift_attenuation $off *Me
+$mc_drift_pmt_coll $off *Me
+$pmt_var $off *Me
+
+*** Run conditions
+*$mc_event_rate 10.00 $per_sec
+*$mc_gen_run_cond $on
+
+*** Extra settings
+$av_z_shift 0.0 *Me
+
+@load_salt_settings
+@run_snodb
